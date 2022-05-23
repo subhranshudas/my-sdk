@@ -9,7 +9,7 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
- },
+  },
   "private": true,
   "dependencies": {
     "core-js": "^3.6.5",
@@ -24,6 +24,9 @@
   "devDependencies": {
     "@babel/core": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-angular": "^16.2.4",
+    "@jscutlery/semver": "^2.23.4",
     "@nrwl/cli": "14.1.7",
     "@nrwl/eslint-plugin-nx": "14.1.7",
     "@nrwl/jest": "14.1.7",

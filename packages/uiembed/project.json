@@ -15,18 +15,6 @@
         "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
-    "publish": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "command": "node tools/scripts/publish.mjs uiembed {args.ver} {args.tag}"
-      },
-      "dependsOn": [
-        {
-          "projects": "self",
-          "target": "build"
-        }
-      ]
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -40,6 +28,20 @@
       "options": {
         "jestConfig": "packages/uiembed/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "ci-version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "angular",
+        "commitMessageFormat": "ci(${projectName}): 🎉 cut release to ${projectName}-v${version}",
+        "postTargets": ["uiembed:build", "uiembed:ci-publish"]
+      }
+    },
+    "ci-publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs uiembed"
       }
     }
   },
