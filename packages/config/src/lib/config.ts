@@ -1,4 +1,3 @@
-
 export interface ConfigMapType {
   [key: number]: { API_BASE_URL: string }
 }

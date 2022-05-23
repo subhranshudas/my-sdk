@@ -1,3 +1,3 @@
-import CONFIG from './lib/config';
+import CONFIG from "./lib/config";
 
 export default CONFIG;
