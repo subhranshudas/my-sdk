@@ -1,5 +1,11 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "config": "packages/config",
+    "demoreact": "packages/demoreact",
+    "restapi": "packages/restapi",
+    "uiembed": "packages/uiembed",
+    "uiweb": "packages/uiweb"
+  }
 }
