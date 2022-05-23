@@ -18,7 +18,7 @@
       "@dasubh/mysdk-restapi": ["packages/restapi/src/index.ts"],
       "@dasubh/mysdk-uiembed": ["packages/uiembed/src/index.ts"],
       "@dasubh/mysdk-uiweb": ["packages/uiweb/src/index.ts"],
-      "@my-sdk/config": ["packages/config/src/index.ts"]
+      "@dasubh/sdk-config": ["packages/config/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

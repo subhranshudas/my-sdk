@@ -1,4 +1,4 @@
-import CONFIG from "@my-sdk/config";
+import CONFIG from "@dasubh/sdk-config";
 
 export function restapi(chainId: number): string {
   const config = CONFIG[chainId].API_BASE_URL
