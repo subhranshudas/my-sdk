@@ -13,18 +13,6 @@
         "assets": ["packages/config/*.md"]
       }
     },
-    "publish": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "command": "node tools/scripts/publish.mjs config {args.ver} {args.tag}"
-      },
-      "dependsOn": [
-        {
-          "projects": "self",
-          "target": "build"
-        }
-      ]
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -38,6 +26,20 @@
       "options": {
         "jestConfig": "packages/config/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "ci-version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "angular",
+        "commitMessageFormat": "ci(${projectName}): 🎉 cut release to ${projectName}-v${version}",
+        "postTargets": ["config:build", "config:ci-publish"]
+      }
+    },
+    "ci-publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs config"
       }
     }
   },
