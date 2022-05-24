@@ -57,5 +57,6 @@
       }
     }
   },
+  "implicitDependencies": ["config"],
   "tags": []
 }
