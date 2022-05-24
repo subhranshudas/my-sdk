@@ -38,5 +38,13 @@
       }
     }
   },
-  "defaultProject": "demoreact"
+  "defaultProject": "demoreact",
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  }
 }
