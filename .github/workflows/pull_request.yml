@@ -1,0 +1,44 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  validate_pr:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macOS-latest
+        node_version:
+          - 14
+          - 16
+
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+      
+
+    - name: "Setup NodeJS"
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node_version }}
+
+    - run: yarn install --frozen-lockfile
+
+    - name: "Build"
+      shell: bash
+      run: yarn nx affected --target build --base= origin/main~1 --head= HEAD --parallel=1
+      
+    - name: "Lint"
+      shell: bash
+      run: yarn nx affected --target lint --base= origin/main~1 --head= HEAD --parallel=1
+
+    - name: "Test"
+      shell: bash
+      run: yarn nx affected --target test --base= origin/main~1 --head= HEAD --parallel=1
